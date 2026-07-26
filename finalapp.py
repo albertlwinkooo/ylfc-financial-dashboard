@@ -8,7 +8,7 @@ st.set_page_config(
     page_title="YLFC Financial Dashboard", page_icon="💰", layout="wide"
 )
 
-st.title("💰 YLFC Financial Dashboard (2025–2026)")
+st.title("YLFC Financial Dashboard (2025–2026)")
 st.markdown("---")
 
 
