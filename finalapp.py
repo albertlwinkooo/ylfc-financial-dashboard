@@ -15,7 +15,7 @@ st.markdown("---")
 # Load the cleaned dataset
 @st.cache_data
 def load_data():
-    data = pd.read_csv("data/cleaned_transactions.csv")
+    data = pd.read_csv("data/Transations of YLFC for 2025-2026 AY.csv")
     if "Date" in data.columns:
         data["Date"] = pd.to_datetime(data["Date"], errors="coerce")
     return data
