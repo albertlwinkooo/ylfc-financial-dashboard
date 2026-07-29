@@ -16,8 +16,22 @@ st.markdown("---")
 @st.cache_data
 def load_data():
     data = pd.read_csv("data/Transations of YLFC for 2025-2026 AY.csv")
+
+    # Ensure date conversion works safely
     if "Date" in data.columns:
         data["Date"] = pd.to_datetime(data["Date"], errors="coerce")
+
+    # Clean numeric columns (removes commas like "80,000" so math works)
+    for col in ["Income", "Expense", "Balance"]:
+        if col in data.columns:
+            data[col] = (
+                data[col]
+                .astype(str)
+                .str.replace(",", "", regex=False)
+                .str.strip()
+            )
+            data[col] = pd.to_numeric(data[col], errors="coerce").fillna(0)
+
     return data
 
 
